@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pilates Classes & Online Booking - Nana Pilates Professional Studio">
+    <meta name="keywords" content="Pilates classes,Pilates booking,Mat Pilates,Reformer classes,Postnatal Pilates">
+    <title>Pilates Classes - Nana Pilates</title>
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Import Separated CSS File -->
+    <link rel="stylesheet" href="courses.css">
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6D4C41', // Warm wood color as primary
+                        secondary: '#FFB74D', // Warm orange as accent
+                        neutral: '#F5F5F5',
+                        beginner: '#4CAF50',   // Beginner course green
+                        intermediate: '#2196F3', // Intermediate course blue
+                        advanced: '#F44336',    // Advanced course red
+                        special: '#9C27B0'      // Special course purple
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation Bar (Controller: Page Navigation) -->
+    <header id="navbar" class="bg-white/95 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+            <a href="../index.html" class="text-2xl font-bold text-primary flex items-center gap-2 icon-rotate-group">
+                <i class="fa fa-leaf icon-rotate"></i>
+                <span>Nana Pilates</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html" class="text-gray-700 hover:text-primary transition-all duration-300 font-medium nav-link">Home</a>
+                <a href="../About-pilates/about-pilates.html" class="text-gray-700 hover:text-primary transition-all duration-300 font-medium nav-link">About Pilates</a>    
+                <a href="../Courses/courses.html" class="text-primary font-medium nav-link active">Classes</a>
+                <a href="../Timetable/timetable.html" class="text-gray-700 hover:text-primary transition-all duration-300 font-medium nav-link">Class Schedule</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fa fa-bars transition-transform duration-300" id="menu-icon"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg hidden transform transition-all duration-300 ease-in-out">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="../index.html" class="py-3 text-gray-700 hover:text-primary transition-all duration-300 border-b border-gray-100">Home</a>
+                <a href="../About-pilates/about-pilates.html" class="py-3 text-gray-700 hover:text-primary transition-all duration-300 border-b border-gray-100">About Pilates</a>    
+                <a href="../Courses/courses.html" class="py-3 text-primary font-medium border-b border-gray-100">Classes</a>
+                <a href="../Timetable/timetable.html" class="py-3 text-gray-700 hover:text-primary transition-all duration-300">Class Schedule</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Section -->
+    <section class="relative h-[40vh] flex items-center justify-center overflow-hidden bg-primary">
+        <div class="container mx-auto px-4 z-10 text-center text-white">
+            <h1 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-4 text-shadow scroll-animate">Professional Pilates Class Series</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto text-shadow scroll-animate">
+                Tailored for students of all levels and needs, from beginner to advanced, group classes to private sessions
+            </p>
+        </div>
+    </section>
+
+    <!-- Course Filter & Search (Controller: Data Filtering) -->
+    <section class="py-12 bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+                <!-- Course Type Filter -->
+                <div class="w-full md:w-auto">
+                    <label class="block text-gray-700 mb-2">Class Type</label>
+                    <div class="flex flex-wrap gap-2" id="filter-buttons-container">
+                        <button class="course-filter-btn active btn-primary px-4 py-2 rounded-md" data-filter="all">
+                            All Classes
+                        </button>
+                        <button class="course-filter-btn btn-secondary px-4 py-2 rounded-md" data-filter="beginner">
+                            Beginner
+                        </button>
+                        <button class="course-filter-btn btn-secondary px-4 py-2 rounded-md" data-filter="intermediate">
+                            Intermediate
+                        </button>
+                        <button class="course-filter-btn btn-secondary px-4 py-2 rounded-md" data-filter="advanced">
+                            Advanced
+                        </button>
+                        <button class="course-filter-btn btn-secondary px-4 py-2 rounded-md" data-filter="special">
+                            Special Courses
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Course Search -->
+                <div class="w-full md:w-1/3">
+                    <label class="block text-gray-700 mb-2">Search Classes</label>
+                    <div class="relative">
+                        <input type="text" id="course-search" placeholder="Search by class name or keyword" 
+                               class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-md form-input">
+                        <i class="fa fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course List (View: Dynamic Rendering Area) -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <!-- Course Sorting -->
+            <div class="mb-8 flex justify-between items-center scroll-animate">
+                <p class="text-gray-600"><span id="course-count">6</span> Classes</p>
+                <div class="flex items-center">
+                    <label for="sort-courses" class="text-gray-700 mr-2">Sort by:</label>
+                    <select id="sort-courses" class="border border-gray-300 rounded-md px-3 py-2 form-input">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Course Container (View will dynamically generate course cards) -->
+            <div id="courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Rendering Area - Initially Empty -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Advantages -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.2rem)] font-bold text-gray-800 mb-4 scroll-animate">Why Choose Nana Pilates Classes?</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-8 scroll-animate"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto scroll-animate">
+                    Our classes focus not only on physical exercise but also on the balance between body and mind, allowing you to enjoy the benefits of Pilates under professional guidance
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-neutral p-8 rounded-lg shadow-sm card-shadow-transition scroll-animate">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-graduation-cap text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Certified Instructors</h3>
+                    <p class="text-gray-600">
+                        All instructors hold international Pilates Method Alliance certification with extensive teaching experience, providing professional guidance tailored to each student.
+                    </p>
+                </div>
+                
+                <div class="bg-neutral p-8 rounded-lg shadow-sm card-shadow-transition scroll-animate">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-cogs text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Personalized Instruction</h3>
+                    <p class="text-gray-600">
+                        Adjust training programs according to students' physical conditions and goals, ensuring everyone gets the most suitable training experience and results.
+                    </p>
+                </div>
+                
+                <div class="bg-neutral p-8 rounded-lg shadow-sm card-shadow-transition scroll-animate">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-heart text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Comfortable Environment</h3>
+                    <p class="text-gray-600">
+                        Spacious and bright studio with professional imported equipment, creating a comfortable and relaxing training atmosphere for you to enjoy the fun of exercise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-gray-800">Book a Class</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700 text-xl">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <p class="text-gray-600">Class: <span id="modal-course-name" class="font-medium text-primary"></span></p>
+                    <p class="text-gray-600">Price: <span id="modal-course-price" class="font-medium text-primary"></span></p>
+                </div>
+                
+                <form id="booking-form">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md form-input" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md form-input" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="date" class="block text-gray-700 mb-2">Booking Date</label>
+                        <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded-md form-input" required>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-md btn-transition">
+                        Confirm Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fa fa-leaf text-secondary"></i>
+                        Nana Pilates
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        Specializing in Pilates training, helping you find balance between body and mind, and improving your quality of life.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-secondary w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center social-icon">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-secondary w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center social-icon">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-secondary w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center social-icon">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> Home
+                        </a></li>
+                        <li><a href="../About-pilates/about-pilates.html" class="text-gray-400 hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> About Pilates
+                        </a></li>
+                        <li><a href="../Courses/courses.html" class="text-gray-400 hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> Classes
+                        </a></li>
+                        <li><a href="../Timetable/timetable.html" class="text-gray-400 hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> Class Schedule
+                        </a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker w-6 text-secondary mt-1"></i>
+                            <span class="text-gray-400">88 Jianguo Road, Chaoyang District, Beijing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone w-6 text-secondary"></i>
+                            <span class="text-gray-400">010-8888-7777</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope w-6 text-secondary"></i>
+                            <a href="mailto:info@nanapilates.com" class="text-gray-400 hover:text-secondary transition-all duration-300">info@nanapilates.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o w-6 text-secondary"></i>
+                            <span class="text-gray-400">Monday to Sunday 08:00-22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Nana Pilates. All rights reserved.</p>
+                <div class="mt-4 flex justify-center gap-4">
+                    <!-- W3C Validator Links -->
+                    <!-- <a href="https://validator.w3.org/check/referer" class="text-gray-400 hover:text-secondary transition-custom">HTML5 Validation</a> -->
+                    <a href="https://validator.w3.org/check?uri=https://ruwen-hu.github.io/2025-Web-Assignment2/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-secondary transition-custom">HTML5 Validation
+                    </a>
+                    <span>|</span>
+                    <!-- <a href="https://jigsaw.w3.org/css-validator/check/referer" class="text-gray-400 hover:text-secondary transition-custom">CSS3 Validation</a> -->
+                    <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://ruwen-hu.github.io/2025-Web-Assignment2/" 
+                    target="_blank" rel="noopener noreferrer" 
+                    class="text-gray-400 hover:text-secondary transition-custom">
+                    CSS3 Validation
+                    </a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (Strict MVC Architecture Implementation) -->
+    <script src="courses.js"></script>
+</body>
+</html>

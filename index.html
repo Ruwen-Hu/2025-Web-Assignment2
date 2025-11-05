@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nana Pilates - Professional Pilates Studio offering high-quality Pilates classes and personalized training programs">
+    <meta name="keywords" content="Pilates,Pilates classes,Pilates instructor,core training,body shaping">
+    <title>Nana Pilates - Professional Pilates Studio</title>
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
+   
+</head>
+
+<body class="font-sans text-gray-800 bg-neutral">
+    <!-- Navigation Bar (Controller: Page Navigation) -->
+    <header id="navbar" class="bg-white/95 backdrop-blur-sm shadow-sm fixed top-0 left-0 right-0 z-50 transition-custom">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+            <a href="../index.html" class="text-2xl font-bold text-primary flex items-center gap-2 group">
+                <i class="fa fa-leaf transition-transform group-hover:rotate-12"></i>
+                <span>Nana Pilates</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html" class="text-gray-700 hover:text-primary transition-custom font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full">Home</a>
+                <a href="../About-pilates/about-pilates.html" class="text-gray-700 hover:text-primary transition-custom font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full">About Pilates</a>    
+                <a href="../Courses/courses.html" class="text-gray-700 hover:text-primary transition-custom font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full">Courses</a>
+                <a href="../Timetable/timetable.html" class="text-gray-700 hover:text-primary transition-custom font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all hover:after:w-full">Class Schedule</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+                <i class="fa fa-bars transition-transform duration-300" id="menu-icon"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg hidden transform transition-all duration-300 ease-in-out">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="../index.html" class="py-3 text-gray-700 hover:text-primary transition-custom border-b border-gray-100">Home</a>
+                <a href="../About-pilates/about-pilates.html" class="py-3 text-gray-700 hover:text-primary transition-custom border-b border-gray-100">About Pilates</a>    
+                <a href="../Courses/courses.html" class="py-3 text-gray-700 hover:text-primary transition-custom border-b border-gray-100">Courses</a>
+                <a href="../Timetable/timetable.html" class="py-3 text-gray-700 hover:text-primary transition-custom">Class Schedule</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (View: Visual Display) -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="Home/image1_1.jpg" alt="Pilates Practice" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center text-white">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold mb-6 leading-tight text-shadow opacity-0 transform translate-y-8" id="hero-title">
+                Discover Your Body's Unlimited Potential
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto mb-8 text-shadow opacity-0 transform translate-y-8" id="hero-desc" style="transition-delay: 0.2s">
+                At Nana Pilates, we help you build core strength, improve flexibility, and rediscover health and vitality through professional Pilates training
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 opacity-0 transform translate-y-8" id="hero-cta" style="transition-delay: 0.4s">
+                <a href="../Courses/courses.html" class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-md transition-custom shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    View Courses
+                </a>
+                <a href="../Timetable/timetable.html" class="bg-transparent border-2 border-white hover:bg-white/10 text-white px-6 py-3 rounded-md transition-custom shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    Class Schedule
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <a href="#about" class="flex flex-col items-center opacity-80 hover:opacity-100 transition-custom">
+                <span class="mb-2 text-sm">Scroll Down</span>
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Studio Introduction (Model: Data Display) -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4 scroll-animate">About Nana Pilates</h2>
+                <div class="w-20 h-1 bg-primary mx-auto scroll-animate"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="overflow-hidden rounded-lg shadow-xl scroll-animate">
+                    <img src="Home/image1_2.jpg" alt="Pilates Studio Environment" class="w-full h-auto transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="space-y-6 scroll-animate">
+                    <h3 class="text-2xl font-semibold text-gray-800">Our Philosophy</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Established in 2015, Nana Pilates is one of the most influential Pilates studios in the city. We are committed to helping each student find balance between body and mind through scientific and systematic Pilates training methods.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        We have an internationally certified instructor team, first-class training equipment, and a comfortable training environment, providing personalized training programs for students of all ages and fitness levels.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 text-center pt-4">
+                        <div class="bg-neutral p-5 rounded-lg transform transition-custom hover:-translate-y-2 hover:shadow-md">
+                            <div class="text-3xl font-bold text-primary mb-2">10+</div>
+                            <p class="text-gray-600">Professional Instructors</p>
+                        </div>
+                        <div class="bg-neutral p-5 rounded-lg transform transition-custom hover:-translate-y-2 hover:shadow-md">
+                            <div class="text-3xl font-bold text-primary mb-2">2000+</div>
+                            <p class="text-gray-600">Satisfied Clients</p>
+                        </div>
+                        <div class="bg-neutral p-5 rounded-lg transform transition-custom hover:-translate-y-2 hover:shadow-md">
+                            <div class="text-3xl font-bold text-primary mb-2">15+</div>
+                            <p class="text-gray-600">Specialized Courses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilates Benefits (Model: Data Display) -->
+    <section class="py-20 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4 scroll-animate">Core Benefits of Pilates</h2>
+                <div class="w-20 h-1 bg-primary mx-auto scroll-animate"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-custom scroll-animate" style="transition-delay: 0.2s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary text-2xl">
+                        <i class="fa fa-arrows-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Improve Flexibility</h3>
+                    <p class="text-gray-600">
+                        Through gentle stretching exercises, increase muscle and joint range of motion, improving overall flexibility and athletic performance.
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-custom scroll-animate" style="transition-delay: 0.3s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary text-2xl">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Enhance Posture</h3>
+                    <p class="text-gray-600">
+                        Correct poor sitting and standing habits, adjust body alignment, relieve neck, shoulder and back pain, and shape an elegant posture.
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-custom scroll-animate" style="transition-delay: 0.6s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary text-2xl">
+                        <i class="fa fa-balance-scale"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Boost Balance</h3>
+                    <p class="text-gray-600">
+                        Through unstable surface training, enhance proprioception and balance, especially suitable for middle-aged and elderly people and rehabilitation patients.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Team (Model: Data Display + Search Function) -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4 scroll-animate">Professional Instructor Team</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-8 scroll-animate"></div>
+                
+                <!-- Search Function (Controller: Data Filtering) -->
+                <div class="max-w-md mx-auto mb-8 scroll-animate">
+                    <div class="relative">
+                        <input type="text" id="trainer-search" placeholder="Search instructors (by name or specialty)" 
+                               class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-custom">
+                        <i class="fa fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <div id="search-results" class="text-sm text-gray-500 mt-2 hidden"></div>
+                </div>
+            </div>
+            
+            <!-- Instructor List (View: Data Display) -->
+            <div id="trainers-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Instructor 1 -->
+                <div class="trainer-card bg-neutral rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-custom" 
+                     data-name="Li Na" data-specialty="Mat Pilates,Postnatal Recovery">
+                    <div class="overflow-hidden h-64">
+                        <img src="Home/image1_3.png" alt="Instructor Li Na" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Li Na</h3>
+                        <p class="text-primary mb-4">Senior Pilates Instructor</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Internationally certified by the Pilates Method Alliance, with 10 years of teaching experience. Specializes in postnatal recovery and mat Pilates training.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Mat Pilates</span>
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Postnatal Recovery</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instructor 2 -->
+                <div class="trainer-card bg-neutral rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-custom"
+                     data-name="Wang Ming" data-specialty="Reformer,Posture Correction">
+                    <div class="overflow-hidden h-64">
+                        <img src="Home/image1_4.png" alt="Instructor Wang Ming" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Wang Ming</h3>
+                        <p class="text-primary mb-4">Reformer Specialist</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Former gymnast, specializing in Reformer equipment training for 8 years. Expert in posture correction and core strength training.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Reformer</span>
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Posture Correction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instructor 3 -->
+                <div class="trainer-card bg-neutral rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-custom"
+                     data-name="Zhang Ting" data-specialty="Rehabilitation Training,Private Coaching">
+                    <div class="overflow-hidden h-64">
+                        <img src="Home/image1_5.png" alt="Instructor Zhang Ting" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Zhang Ting</h3>
+                        <p class="text-primary mb-4">Rehabilitation Training Expert</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Background in sports rehabilitation, skilled in using Pilates to address neck, shoulder, back and leg pain issues with personalized private coaching programs.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Rehabilitation Training</span>
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Private Coaching</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instructor 4 -->
+                <div class="trainer-card bg-neutral rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-custom"
+                     data-name="Liu Qiang" data-specialty="Advanced Private Coaching,Body Shaping">
+                    <div class="overflow-hidden h-64">
+                        <img src="Home/image1_6.png" alt="Instructor Liu Qiang" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Liu Qiang</h3>
+                        <p class="text-primary mb-4">Advanced Private Trainer</p>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Internationally certified personal trainer, focusing on one-on-one Pilates training. Specializes in body shaping and physical fitness improvement programs.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Advanced Private Coaching</span>
+                            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded">Body Shaping</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials (Model: Data Display + Carousel Function) -->
+    <section class="py-20 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-800 mb-4 scroll-animate">Client Testimonials</h2>
+                <div class="w-20 h-1 bg-primary mx-auto scroll-animate"></div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <div class="flex justify-center gap-2 mb-8 scroll-animate">
+                <button id="prev-testimonial" class="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center hover:bg-primary hover:text-white transition-custom">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button id="next-testimonial" class="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center hover:bg-primary hover:text-white transition-custom">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Testimonial Carousel -->
+            <div class="relative">
+                <div id="testimonials-container" class="testimonial-slider flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide bg-white p-8 rounded-lg shadow-md min-w-[300px] md:min-w-[350px] flex-shrink-0 scroll-animate">
+                        <div class="text-secondary mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "After practicing at Nana Pilates for 3 months, my back pain has significantly improved and my posture has become much better. Instructor Li is very professional and adjusts the exercises according to my condition - every session feels comfortable and effective."
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/id/1025/100/100" alt="Ms. Chen" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold">Ms. Chen</h4>
+                                <p class="text-gray-500 text-sm">Mat Pilates Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide bg-white p-8 rounded-lg shadow-md min-w-[300px] md:min-w-[350px] flex-shrink-0 scroll-animate">
+                        <div class="text-secondary mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "As an office worker who sits for long hours, I've had issues with my cervical spine and lumbar region. Under Instructor Wang's guidance with Reformer Pilates, I felt a significant improvement in my body's comfort after just two months!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/id/1012/100/100" alt="Mr. Zhang" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold">Mr. Zhang</h4>
+                                <p class="text-gray-500 text-sm">Reformer Course Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide bg-white p-8 rounded-lg shadow-md min-w-[300px] md:min-w-[350px] flex-shrink-0 scroll-animate">
+                        <div class="text-secondary mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "Postpartum body recovery has always been a concern for me until I met Instructor Zhang. The postnatal Pilates program she customized for me was extremely effective - not only did I regain my pre-pregnancy figure, but my postpartum back pain was also relieved!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/id/1062/100/100" alt="Ms. Lin" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold">Ms. Lin</h4>
+                                <p class="text-gray-500 text-sm">Postnatal Recovery Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide bg-white p-8 rounded-lg shadow-md min-w-[300px] md:min-w-[350px] flex-shrink-0 scroll-animate">
+                        <div class="text-secondary mb-4">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <p class="text-gray-600 italic mb-6">
+                            "Instructor Liu's private classes are extremely professional. He designed a systematic training program targeting my weak core strength, and I saw obvious improvements within three months. Highly recommended!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://picsum.photos/id/1025/100/100" alt="Mr. Wang" class="w-12 h-12 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-semibold">Mr. Wang</h4>
+                                <p class="text-gray-500 text-sm">Personalized Training Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6 scroll-animate">Ready to Start Your Pilates Journey?</h2>
+            <p class="text-white/80 max-w-2xl mx-auto mb-10 text-lg scroll-animate">
+                Enjoy 20% off your first experience! Book a private session and our professional instructors will provide you with a personalized assessment and training recommendations.
+            </p>
+            <a href="../Timetable/timetable.html" class="inline-block bg-white text-primary hover:bg-secondary hover:text-white px-8 py-4 rounded-md transition-custom font-medium text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 scroll-animate">
+                Book Your Trial Class Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fa fa-leaf text-secondary"></i>
+                        Nana Pilates
+                    </h3>
+                    <p class="text-gray-400 mb-6">
+                        Specializing in Pilates training, helping you find balance between body and mind, and improving your quality of life.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-custom text-xl w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-custom text-xl w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-custom text-xl w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-secondary transition-custom flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> Home
+                        </a></li>
+                        <li><a href="../About-pilates/about-pilates.html" class="text-gray-400 hover:text-secondary transition-custom flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> About Pilates
+                        </a></li>
+                        <li><a href="../Courses/courses.html" class="text-gray-400 hover:text-secondary transition-custom flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> Courses
+                        </a></li>
+                        <li><a href="../Timetable/timetable.html" class="text-gray-400 hover:text-secondary transition-custom flex items-center gap-2">
+                            <i class="fa fa-angle-right"></i> Class Schedule
+                        </a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker w-6 text-secondary mt-1"></i>
+                            <span class="text-gray-400">88 Jianguo Road, Chaoyang District, Beijing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone w-6 text-secondary"></i>
+                            <span class="text-gray-400">010-8888-7777</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope w-6 text-secondary"></i>
+                            <a href="mailto:info@nanapilates.com" class="text-gray-400 hover:text-secondary transition-custom">info@nanapilates.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o w-6 text-secondary"></i>
+                            <span class="text-gray-400">Monday to Sunday 08:00-22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Nana Pilates. All rights reserved.</p>
+                <div class="mt-4 flex justify-center gap-4">
+                    <!-- W3C Validator Links -->
+                    <!-- <a href="https://validator.w3.org/check/referer" class="text-gray-400 hover:text-secondary transition-custom">HTML5 Validation</a> -->
+                    <a href="https://validator.w3.org/check?uri=https://ruwen-hu.github.io/2025-Web-Assignment2/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-secondary transition-custom">HTML5 Validation
+                    </a>
+                    <span>|</span>
+                    <!-- <a href="https://jigsaw.w3.org/css-validator/check/referer" class="text-gray-400 hover:text-secondary transition-custom">CSS3 Validation</a> -->
+                    <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://ruwen-hu.github.io/2025-Web-Assignment2/" 
+                    target="_blank" rel="noopener noreferrer" 
+                    class="text-gray-400 hover:text-secondary transition-custom">
+                    CSS3 Validation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pilates History, Benefits & Training Methods - Nana Pilates Professional Studio">
+    <meta name="keywords" content="Pilates history,Pilates benefits,Pilates training methods,Joseph Pilates">
+    <title>About Pilates - Nana Pilates</title>
+    <!-- External Resources -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Import Separated CSS File -->
+    <link rel="stylesheet" href="about-pilates.css">
+</head>
+
+<body>
+    <!-- Navigation Bar (Controller: Page Navigation) -->
+    <header id="navbar">
+        <div class="container navbar-container">
+            <a href="../index.html" class="logo">
+                <i class="fa fa-leaf"></i>
+                <span>Nana Pilates</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="../About-pilates/about-pilates.html" class="active">About Pilates</a>
+                <a href="../Courses/courses.html">Classes</a>
+                <a href="../Timetable/timetable.html">Class Schedule</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="mobile-menu-btn">
+                <i class="fa fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="container">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../About-pilates/about-pilates.html" class="active">About Pilates</a></li>
+                    <li><a href="../Courses/courses.html">Classes</a></li>
+                    <li><a href="../Timetable/timetable.html">Class Schedule</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1 class="hero-title text-shadow scroll-animate">Pilates: History, Benefits & Training Methods</h1>
+            <p class="hero-desc text-shadow scroll-animate">
+                Explore the origins of Pilates, understand its unique training philosophy, and learn how to improve physical and mental health through scientific training
+            </p>
+        </div>
+    </section>
+
+    <!-- Pilates History (Model: Data Display) -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="history-container">
+                <div class="history-image scroll-animate">
+                    <img src="image2_1.png" alt="Joseph Pilates">
+                </div>
+                <div class="history-content scroll-animate">
+                    <h2 class="section-title">The History of Pilates</h2>
+                    <p>
+                        Pilates was founded in the early 20th century by German fitness instructor Joseph Pilates. Originally named "Contrology," it aims to help people improve body control and overall health through a mind-body integrated training method.
+                    </p>
+                    <p>
+                        During World War I, Joseph Pilates designed a series of rehabilitation exercises for injured soldiers to help them restore physical function. After the war, he further developed and refined these training methods, opening the first Pilates studio in New York, which gradually gained popularity among dancers, athletes, and ordinary people.
+                    </p>
+                    <p>
+                        Today, Pilates has become a globally popular fitness method, and its core principles of "Control, Precision, Breath, and Flow" remain the fundamental guidelines for all Pilates training.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Benefits of Pilates (Model: Data Display + Category Filtering) -->
+    <section class="section section-neutral">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h2 class="section-title scroll-animate">Core Benefits of Pilates</h2>
+                <div class="section-divider scroll-animate"></div>
+                
+                <!-- Category Filter Function (Controller: Data Filtering) -->
+                <div class="filter-buttons scroll-animate">
+                    <button class="benefit-filter-btn active" data-filter="all">
+                        All Benefits
+                    </button>
+                    <button class="benefit-filter-btn" data-filter="physical">
+                        Physical Benefits
+                    </button>
+                    <button class="benefit-filter-btn" data-filter="mental">
+                        Mental Benefits
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Benefits List (View: Data Display) -->
+            <div id="benefits-container" class="benefits-container">
+                <!-- Physical Benefit 1 -->
+                <div class="benefit-card card-hover" data-category="physical">
+                    <div class="benefit-icon">
+                        <i class="fa fa-dumbbell"></i>
+                    </div>
+                    <h3 class="benefit-title">Strengthen Core Muscles</h3>
+                    <p class="benefit-desc">
+                        Pilates focuses specifically on training the core muscles (abdomen, back, pelvic floor muscles). Through deep muscle activation, it enhances body stability and support, improving posture issues.
+                    </p>
+                </div>
+                
+                <!-- Physical Benefit 2 -->
+                <div class="benefit-card card-hover" data-category="physical">
+                    <div class="benefit-icon">
+                        <i class="fa fa-arrows-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Improve Flexibility</h3>
+                    <p class="benefit-desc">
+                        Through slow, controlled stretching movements, Pilates helps increase the range of motion of muscles and joints, reduce muscle tension, and improve overall flexibility and athletic performance.
+                    </p>
+                </div>
+                
+                <!-- Physical Benefit 3 -->
+                <div class="benefit-card card-hover" data-category="physical">
+                    <div class="benefit-icon">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <h3 class="benefit-title">Prevent Sports Injuries</h3>
+                    <p class="benefit-desc">
+                        Pilates emphasizes proper body alignment and movement patterns. By enhancing muscle coordination and proprioception, it reduces the risk of injuries during sports and daily activities, making it particularly suitable for rehabilitation.
+                    </p>
+                </div>
+                
+                <!-- Mental Benefit 1 -->
+                <div class="benefit-card card-hover" data-category="mental">
+                    <div class="benefit-icon">
+                        <i class="fa fa-heart"></i>
+                    </div>
+                    <h3 class="benefit-title">Reduce Stress and Anxiety</h3>
+                    <p class="benefit-desc">
+                        Pilates combines breath control and mindfulness practice, helping to calm the mind, reduce daily stress, promote physical and mental relaxation, and improve sleep quality.
+                    </p>
+                </div>
+                
+                <!-- Mental Benefit 2 -->
+                <div class="benefit-card card-hover" data-category="mental">
+                    <div class="benefit-icon">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h3 class="benefit-title">Enhance Concentration</h3>
+                    <p class="benefit-desc">
+                        The training process requires focus on the coordination of movements and breathing, which helps improve attention span and concentration, strengthen the mind-body connection, and enhance focus in daily life.
+                    </p>
+                </div>
+                
+                <!-- Mental Benefit 3 -->
+                <div class="benefit-card card-hover" data-category="mental">
+                    <div class="benefit-icon">
+                        <i class="fa fa-smile-o"></i>
+                    </div>
+                    <h3 class="benefit-title">Boost Self-Confidence</h3>
+                    <p class="benefit-desc">
+                        Continuous training improves body shape and health, enhances body awareness and self-perception, thereby boosting self-confidence and self-acceptance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilates Training Methods (Model: Data Display + Interactive Effects) -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h2 class="section-title scroll-animate">Core Pilates Training Methods</h2>
+                <div class="section-divider scroll-animate"></div>
+            </div>
+            
+            <div class="methods-container">
+                <!-- Training Method 1 -->
+                <div class="method-item scroll-animate">
+                    <div class="method-number">1</div>
+                    <div class="method-content">
+                        <h3 class="method-title">Mat Pilates</h3>
+                        <p class="method-desc">
+                            The most basic form of Pilates training that requires no equipment (or only minimal auxiliary tools like resistance bands and small balls) and uses body weight for exercise.
+                        </p>
+                        <p class="method-desc">
+                            Suitable for: Beginners, home training, and building foundational core strength. Common exercises include: Hundreds, Roll-Up, Single Leg Stretch, etc.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Training Method 2 -->
+                <div class="method-item scroll-animate">
+                    <div class="method-number">2</div>
+                    <div class="method-content">
+                        <h3 class="method-title">Equipment Pilates</h3>
+                        <p class="method-desc">
+                            Training using professional Pilates equipment, the most common being the Reformer. It provides resistance or support through springs to achieve more precise muscle training.
+                        </p>
+                        <p class="method-desc">
+                            Suitable for: Students of all levels, rehabilitation training, and deep muscle activation. Other equipment includes: Cadillac, Wunda Chair, etc.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Training Method 3 -->
+                <div class="method-item scroll-animate">
+                    <div class="method-number">3</div>
+                    <div class="method-content">
+                        <h3 class="method-title">Pilates Breathing Technique</h3>
+                        <p class="method-desc">
+                            Pilates emphasizes the "lateral breathing" (or "intercostal breathing") method—expanding the ribs sideways when inhaling and engaging the abdomen when exhaling, helping to stabilize the core and provide movement energy.
+                        </p>
+                        <p class="method-desc">
+                            Breath is closely coordinated with movement: usually exhale during exertion and inhale during relaxation or preparation, helping to improve movement quality and training effectiveness.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Training Method 4 -->
+                <div class="method-item scroll-animate">
+                    <div class="method-number">4</div>
+                    <div class="method-content">
+                        <h3 class="method-title">Pilates Core Principles</h3>
+                        <p class="method-desc">
+                            All Pilates training is based on six core principles: Control, Precision, Breath, Flow, Centering, and Concentration.
+                        </p>
+                        <p class="method-desc">
+                            These principles ensure the safety and effectiveness of training, helping students maximize benefits in every movement while avoiding sports injuries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suitable Crowds (Model: Data Display + Animation Effects) -->
+    <section class="section section-neutral">
+        <div class="container">
+            <div class="text-center mb-8">
+                <h2 class="section-title scroll-animate">Who is Pilates Suitable For?</h2>
+                <div class="section-divider scroll-animate"></div>
+            </div>
+            
+            <div class="people-container">
+                <!-- Suitable Crowd 1 -->
+                <div class="people-card card-hover scroll-animate">
+                    <div class="people-icon">
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                    <h3 class="people-title">Office Workers</h3>
+                    <p class="people-desc">
+                        Alleviate neck, shoulder, and back pain caused by prolonged sitting, correct poor posture, and reduce work stress.
+                    </p>
+                </div>
+                
+                <!-- Suitable Crowd 2 -->
+                <div class="people-card card-hover scroll-animate">
+                    <div class="people-icon">
+                        <i class="fa fa-female"></i>
+                    </div>
+                    <h3 class="people-title">Postpartum Mothers</h3>
+                    <p class="people-desc">
+                        Restore pelvic floor muscle function, repair diastasis recti, reshape body contour, and relieve postpartum discomfort.
+                    </p>
+                </div>
+                
+                <!-- Suitable Crowd 3 -->
+                <div class="people-card card-hover scroll-animate">
+                    <div class="people-icon">
+                        <i class="fa fa-futbol-o"></i>
+                    </div>
+                    <h3 class="people-title">Athletes</h3>
+                    <p class="people-desc">
+                        Enhance athletic performance, prevent sports injuries, and improve core stability and body coordination.
+                    </p>
+                </div>
+                
+                <!-- Suitable Crowd 4 -->
+                <div class="people-card card-hover scroll-animate">
+                    <div class="people-icon">
+                        <i class="fa fa-heartbeat"></i>
+                    </div>
+                    <h3 class="people-title">Rehabilitation Patients</h3>
+                    <p class="people-desc">
+                        Assist physical therapy, restore function of injured areas, improve chronic pain, and enhance quality of life.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section section-primary">
+        <div class="container text-center">
+            <h2 class="section-title section-title-primary scroll-animate">Ready to Start Your Pilates Journey?</h2>
+            <p class="section-desc section-desc-white scroll-animate">
+                Enjoy 20% off your first trial class. Book a private session, and our professional instructors will provide you with personalized assessment and training recommendations.
+            </p>
+            <div class="button-container">
+                <a href="../Timetable/timetable.html" class="btn btn-primary">Book a Class</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col footer-about">
+                    <h3>
+                        <i class="fa fa-leaf"></i>
+                        Nana Pilates
+                    </h3>
+                    <p>
+                        Specializing in Pilates training, helping you find balance between body and mind, and improving your quality of life.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">
+                            <i class="fa fa-angle-right"></i> Home
+                        </a></li>
+                        <li><a href="../About-pilates/about-pilates.html">
+                            <i class="fa fa-angle-right"></i> About Pilates
+                        </a></li>
+                        <li><a href="../Courses/courses.html">
+                            <i class="fa fa-angle-right"></i> Classes
+                        </a></li>
+                        <li><a href="../Timetable/timetable.html">
+                            <i class="fa fa-angle-right"></i> Class Schedule
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            <span>88 Jianguo Road, Chaoyang District, Beijing</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            <span>010-8888-7777</span>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            <a href="mailto:info@nanapilates.com">info@nanapilates.com</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-clock-o"></i>
+                            <span>Monday to Sunday 08:00-22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nana Pilates. All rights reserved.</p>
+                <div class="footer-validators">
+                    <!-- W3C Validator Links -->
+                    <!-- <a href="https://validator.w3.org/check/referer" class="text-gray-400 hover:text-secondary transition-custom">HTML5 Validation</a> -->
+                    <a href="https://validator.w3.org/check?uri=https://ruwen-hu.github.io/2025-Web-Assignment2/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-secondary transition-custom">HTML5 Validation
+                    </a>
+                    <span>|</span>
+                    <!-- <a href="https://jigsaw.w3.org/css-validator/check/referer" class="text-gray-400 hover:text-secondary transition-custom">CSS3 Validation</a> -->
+                    <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://ruwen-hu.github.io/2025-Web-Assignment2/" 
+                    target="_blank" rel="noopener noreferrer" 
+                    class="text-gray-400 hover:text-secondary transition-custom">
+                    CSS3 Validation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="about-pilates.js"></script>
+</body>
+</html>
