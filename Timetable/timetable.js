@@ -1,5 +1,4 @@
-
-        // Course Data Model
+// Course Data Model
 class Course {
     constructor(data) {
         this.type = data.type;
@@ -63,11 +62,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeSuccess = document.getElementById('close-success');
     const successMessage = document.getElementById('success-message');
     
-    // Current Date Settings
+    // Current Date Settings 
     let currentDate = new Date(2024, 5, 10); // June 10, 2024
     let currentView = 'week';
     
-    // Load Course Data from DOM
+    // Helper Functions
+    function parseHTMLDate(dateStr) {
+        const months = {
+            'January': 0, 'February': 1, 'March': 2, 'April': 3,
+            'May': 4, 'June': 5, 'July': 6, 'August': 7,
+            'September': 8, 'October': 9, 'November': 10, 'December': 11
+        };
+        
+        const parts = dateStr.split(' ');
+        const month = months[parts[0]];
+        const day = parseInt(parts[1].replace(',', ''));
+        const year = parseInt(parts[2]);
+        
+        return `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    }
+    
+    function formatDateForDisplay(date) {
+        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} (${weekdays[date.getDay()]})`;
+    }
+    
+    function formatDateForComparison(date) {
+        return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    }
+    
+    // Load Course Data from DOM 
     const courseElements = document.querySelectorAll('.course-item');
     let courses = Array.from(courseElements).map(el => {
         return new Course({
@@ -75,27 +101,30 @@ document.addEventListener('DOMContentLoaded', () => {
             name: el.dataset.course,
             coach: el.dataset.coach,
             time: el.dataset.time,
-            date: el.dataset.date,
-            remaining: el.dataset.remaining
+            date: parseHTMLDate(el.dataset.date), 
+            remaining: parseInt(el.dataset.remaining) || 0
         });
     });
     
-    // Mobile Menu Toggle (Unified interaction with courses page)
+    // Mobile Menu Toggle 
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('rotate-90');
+        mobileMenu.classList.toggle('open');
+        menuIcon.classList.toggle('fa-times');
         
-        if (!mobileMenu.classList.contains('hidden')) {
-            mobileMenu.style.maxHeight = "0";
+        if (mobileMenu.classList.contains('open')) {
+            mobileMenu.style.display = 'block';
             setTimeout(() => {
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                mobileMenu.style.transform = 'translateY(0)';
             }, 10);
         } else {
-            mobileMenu.style.maxHeight = "0";
+            mobileMenu.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                mobileMenu.style.display = 'none';
+            }, 300);
         }
     });
     
-    // Navbar Scroll Effect (Unified with courses page)
+    // Navbar Scroll Effect
     window.addEventListener("scroll", () => {
         if (window.scrollY > 100) {
             navbar.classList.add("py-2", "shadow-md");
@@ -106,29 +135,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // View Toggle (Optimized button styles with unified btn-primary/btn-secondary)
+    // View Toggle 
     weekViewBtn.addEventListener('click', () => {
         currentView = 'week';
-        weekView.classList.remove('hidden');
-        dayView.classList.add('hidden');
-        weekViewBtn.classList.add('active', 'btn-primary', 'text-white');
-        weekViewBtn.classList.remove('btn-secondary', 'bg-gray-200', 'text-gray-700');
-        dayViewBtn.classList.add('btn-secondary', 'bg-gray-200', 'text-gray-700');
-        dayViewBtn.classList.remove('btn-primary', 'text-white');
+        weekView.style.display = 'block';
+        dayView.style.display = 'none';
+        
+        weekViewBtn.classList.remove('btn-secondary');
+        weekViewBtn.classList.add('btn-primary', 'active');
+        dayViewBtn.classList.remove('btn-primary', 'active');
+        dayViewBtn.classList.add('btn-secondary');
     });
     
     dayViewBtn.addEventListener('click', () => {
         currentView = 'day';
-        weekView.classList.add('hidden');
-        dayView.classList.remove('hidden');
-        dayViewBtn.classList.add('active', 'btn-primary', 'text-white');
-        dayViewBtn.classList.remove('btn-secondary', 'bg-gray-200', 'text-gray-700');
-        weekViewBtn.classList.add('btn-secondary', 'bg-gray-200', 'text-gray-700');
-        weekViewBtn.classList.remove('btn-primary', 'text-white');
+        weekView.style.display = 'none';
+        dayView.style.display = 'block';
+        dayView.classList.add('active');
+         
+        dayViewBtn.classList.remove('btn-secondary');
+        dayViewBtn.classList.add('btn-primary', 'active');
+        weekViewBtn.classList.remove('btn-primary', 'active');
+        weekViewBtn.classList.add('btn-secondary');
+        
         renderDayView();
     });
     
-    // Date Navigation
+   
     prevWeekBtn.addEventListener('click', () => {
         currentDate.setDate(currentDate.getDate() - 7);
         updateDateDisplay();
@@ -141,38 +174,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
     prevDayBtn.addEventListener('click', () => {
         currentDate.setDate(currentDate.getDate() - 1);
-        dayViewDate.textContent = formatDate(currentDate);
         renderDayView();
     });
     
     nextDayBtn.addEventListener('click', () => {
         currentDate.setDate(currentDate.getDate() + 1);
-        dayViewDate.textContent = formatDate(currentDate);
         renderDayView();
     });
     
-    // Update Date Display
+    // Update Date Display 
     function updateDateDisplay() {
         const startDate = new Date(currentDate);
         const endDate = new Date(currentDate);
         endDate.setDate(endDate.getDate() + 6);
         
-        currentDateRange.textContent = `${startDate.getFullYear()}-${(startDate.getMonth() + 1).toString().padStart(2, '0')}-${startDate.getDate().toString().padStart(2, '0')} - ${endDate.getFullYear()}-${(endDate.getMonth() + 1).toString().padStart(2, '0')}-${endDate.getDate().toString().padStart(2, '0')}`;
-        dayViewDate.textContent = formatDate(currentDate);
+        currentDateRange.textContent = `${formatDateForDisplay(startDate)} - ${formatDateForDisplay(endDate)}`;
+        dayViewDate.textContent = formatDateForDisplay(currentDate);
     }
     
-    // Format Date Display
-    function formatDate(date) {
-        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} (${weekdays[date.getDay()]})`;
-    }
-    
-    // Render Day View Courses
+    // Render Day View Courses 
     function renderDayView() {
-        const targetDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
+        const targetDate = formatDateForComparison(currentDate);
         const dayCourses = courses.filter(course => course.date === targetDate);
         
-        // Clear existing content
+        dayViewDate.textContent = formatDateForDisplay(currentDate);
+        
         dayViewCourses.innerHTML = '';
         
         if (dayCourses.length === 0) {
@@ -180,56 +206,56 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Sort by time
-        dayCourses.sort((a, b) => {
-            return a.time.localeCompare(b.time);
-        });
+        dayCourses.sort((a, b) => a.time.localeCompare(b.time));
         
-        // Create course elements
         dayCourses.forEach(course => {
             const courseEl = document.createElement('div');
             
-            // Set styles based on course type
-            let borderColor, typeClass;
+            let borderColor, bgColor, typeClass;
             switch(course.type) {
                 case 'mat':
-                    borderColor = 'border-green-500';
+                    borderColor = 'border-l-green-500';
+                    bgColor = 'bg-green-50';
                     typeClass = 'Beginner Class';
                     break;
                 case 'reformer':
-                    borderColor = course.name.includes('Intermediate') ? 'border-blue-600' : 'border-blue-500';
+                    borderColor = course.name.includes('Intermediate') ? 'border-l-blue-600' : 'border-l-blue-500';
+                    bgColor = 'bg-blue-50';
                     typeClass = course.name.includes('Intermediate') ? 'Intermediate Class' : 'Beginner Class';
                     break;
                 case 'postnatal':
-                    borderColor = 'border-purple-500';
+                    borderColor = 'border-l-purple-500';
+                    bgColor = 'bg-purple-50';
                     typeClass = 'Postnatal Recovery';
                     break;
                 case 'rehab':
-                    borderColor = 'border-red-500';
+                    borderColor = 'border-l-red-500';
+                    bgColor = 'bg-red-50';
                     typeClass = 'Rehabilitation';
                     break;
                 case 'private':
-                    borderColor = 'border-yellow-500';
+                    borderColor = 'border-l-yellow-500';
+                    bgColor = 'bg-yellow-50';
                     typeClass = 'Private Session';
                     break;
             }
             
-            courseEl.className = `border-l-4 ${borderColor} pl-6 py-2 hover:bg-gray-50 rounded transition-colors fade-in`;
+            courseEl.className = `border-l-4 ${borderColor} ${bgColor} pl-6 py-4 hover:bg-gray-50 rounded transition-colors fade-in`;
             courseEl.dataset.type = course.type;
             
             courseEl.innerHTML = `
                 <div class="flex flex-wrap md:flex-nowrap justify-between items-start gap-4">
-                    <div>
-                        <h3 class="text-xl font-semibold">${course.name}</h3>
-                        <p class="text-gray-600">Instructor: ${course.coach}</p>
-                        <div class="flex flex-wrap gap-2 mt-2">
-                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">${typeClass}</span>
-                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">60 Minutes</span>
-                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Spots Left: ${course.remaining}</span>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-800">${course.name}</h3>
+                        <p class="text-gray-600 mt-1">Instructor: ${course.coach}</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-xs bg-white text-gray-700 px-3 py-1 rounded border">${typeClass}</span>
+                            <span class="text-xs bg-white text-gray-700 px-3 py-1 rounded border">60 Minutes</span>
+                            <span class="text-xs bg-white text-gray-700 px-3 py-1 rounded border">Spots Left: ${course.remaining}</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-end">
-                        <div class="text-lg font-medium mb-3">${course.time}</div>
+                        <div class="text-lg font-medium text-gray-700 mb-3">${course.time}</div>
                         <button class="book-course-btn btn-primary hover:bg-primary/90 text-white px-6 py-2 rounded-md transition-colors ${course.remaining <= 0 ? 'opacity-50 cursor-not-allowed' : ''}"
                                 data-course="${course.name}" 
                                 data-time="${course.time}" 
@@ -245,61 +271,74 @@ document.addEventListener('DOMContentLoaded', () => {
             dayViewCourses.appendChild(courseEl);
         });
         
-        // Attach event listeners to newly created booking buttons
         attachBookButtonEvents();
     }
     
-    // Course Filter Function
+    // Course Filter Function 
     function filterCourses() {
         const selectedType = courseTypeFilter.value;
         const searchTerm = courseSearch.value.toLowerCase().trim();
-        const courseItems = document.querySelectorAll('.course-item, #day-view .border-l-4');
         
-        courseItems.forEach(item => {
-            const type = item.dataset.type;
-            const courseName = (item.dataset.course || item.querySelector('h3')?.textContent || '').toLowerCase();
-            const coachName = (item.dataset.coach || item.querySelector('.text-gray-600')?.textContent?.replace('Instructor: ', '') || '').toLowerCase();
+        if (currentView === 'week') {
+
+            const courseItems = document.querySelectorAll('#week-view .course-item');
             
-            const typeMatch = selectedType === 'all' || type === selectedType;
-            const searchMatch = !searchTerm || courseName.includes(searchTerm) || coachName.includes(searchTerm);
-            
-            if (typeMatch && searchMatch) {
-                item.style.display = '';
-                if (currentView === 'day') item.classList.add('fade-in');
-            } else {
-                item.style.display = 'none';
-            }
-        });
+            courseItems.forEach(item => {
+                const type = item.dataset.type;
+                const courseName = item.dataset.course.toLowerCase();
+                const coachName = item.dataset.coach.toLowerCase();
+                
+                const typeMatch = selectedType === 'all' || type === selectedType;
+                const searchMatch = !searchTerm || courseName.includes(searchTerm) || coachName.includes(searchTerm);
+                
+                if (typeMatch && searchMatch) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        } else {
+
+            renderDayView();
+        }
     }
     
     // Filter Event Listeners
     courseTypeFilter.addEventListener('change', filterCourses);
     courseSearch.addEventListener('input', filterCourses);
     
-    // Open Booking Modal
+    // Open Booking Modal 
     function attachBookButtonEvents() {
         const bookButtons = document.querySelectorAll('.book-course-btn:not([disabled])');
         
         bookButtons.forEach(button => {
-            button.addEventListener('click', () => {
+            
+            button.replaceWith(button.cloneNode(true));
+        });
+        
+       
+        document.querySelectorAll('.book-course-btn:not([disabled])').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
                 const course = button.dataset.course;
                 const time = button.dataset.time;
                 const date = button.dataset.date;
                 const coach = button.dataset.coach;
                 
-                // Populate form data
                 document.getElementById('booking-course').value = course;
                 document.getElementById('booking-time').value = time;
                 document.getElementById('booking-date').value = date;
                 document.getElementById('booking-coach').value = coach;
                 
-                // Display course preview
                 document.getElementById('booking-preview').innerHTML = 
-                    `Course: ${course} | Time: ${date} ${time} | Instructor: ${coach}`;
+                    `<strong>Course:</strong> ${course}<br>
+                     <strong>Time:</strong> ${time}<br>
+                     <strong>Date:</strong> ${date}<br>
+                     <strong>Instructor:</strong> ${coach}`;
                 
-                // Show modal (using unified active class)
                 bookingModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
             });
         });
     }
@@ -331,34 +370,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Course Item Click Event (Week View)
-    document.querySelectorAll('.course-item').forEach(item => {
+    // Course Item Click Event (Week View) -
+    document.querySelectorAll('#week-view .course-item').forEach(item => {
         item.addEventListener('click', () => {
-            // Check if there are remaining spots
             const remaining = parseInt(item.dataset.remaining);
             if (remaining <= 0) return;
             
-            // Simulate booking button click effect
-            const virtualButton = {
-                dataset: {
-                    course: item.dataset.course,
-                    time: item.dataset.time,
-                    date: item.dataset.date,
-                    coach: item.dataset.coach
-                }
+            const course = {
+                name: item.dataset.course,
+                time: item.dataset.time,
+                date: parseHTMLDate(item.dataset.date),
+                coach: item.dataset.coach
             };
             
-            // Populate form data
-            document.getElementById('booking-course').value = virtualButton.dataset.course;
-            document.getElementById('booking-time').value = virtualButton.dataset.time;
-            document.getElementById('booking-date').value = virtualButton.dataset.date;
-            document.getElementById('booking-coach').value = virtualButton.dataset.coach;
+            document.getElementById('booking-course').value = course.name;
+            document.getElementById('booking-time').value = course.time;
+            document.getElementById('booking-date').value = course.date;
+            document.getElementById('booking-coach').value = course.coach;
             
-            // Display course preview
             document.getElementById('booking-preview').innerHTML = 
-                `Course: ${virtualButton.dataset.course} | Time: ${virtualButton.dataset.date} ${virtualButton.dataset.time} | Instructor: ${virtualButton.dataset.coach}`;
+                `<strong>Course:</strong> ${course.name}<br>
+                 <strong>Time:</strong> ${course.time}<br>
+                 <strong>Date:</strong> ${item.dataset.date}<br>
+                 <strong>Instructor:</strong> ${course.coach}`;
             
-            // Show modal
             bookingModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
@@ -368,7 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Get form data
         const formData = {
             name: document.getElementById('booking-name').value,
             phone: document.getElementById('booking-phone').value,
@@ -376,12 +410,10 @@ document.addEventListener('DOMContentLoaded', () => {
             notes: document.getElementById('booking-notes').value
         };
         
-        // Get course information
         const courseName = document.getElementById('booking-course').value;
         const courseTime = document.getElementById('booking-time').value;
         const courseDate = document.getElementById('booking-date').value;
         
-        // Find the corresponding course
         const course = courses.find(c => 
             c.name === courseName && 
             c.time === courseTime && 
@@ -389,53 +421,65 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         
         if (course && course.book()) {
-            // Create booking record
+          
             const booking = new Booking(course, formData);
             
-            // Save to local storage
             const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
             bookings.push(booking);
             localStorage.setItem('bookings', JSON.stringify(bookings));
             
-            // Update remaining spots display
             updateRemainingDisplay(course);
             
-            // Display success message
             successMessage.textContent = 
                 `You have successfully booked ${course.name}!\nDate: ${course.date} ${course.time}\nA confirmation SMS will be sent to your phone.`;
             
-            // Close booking modal and show success modal
             bookingModal.classList.remove('active');
             successModal.classList.add('active');
             
-            // Reset form
             bookingForm.reset();
         } else {
             alert('Booking failed. This course is fully booked.');
         }
     });
     
-    // Update Remaining Spots Display
+    // Update Remaining Spots Display 
     function updateRemainingDisplay(course) {
-        // Update week view
-        document.querySelectorAll(`.course-item[data-course="${course.name}"][data-time="${course.time}"][data-date="${course.date}"]`).forEach(el => {
-            el.dataset.remaining = course.remaining;
-            el.querySelector('.course-remaining').textContent = `Spots left: ${course.remaining}`;
+        document.querySelectorAll(`.course-item[data-course="${course.name}"]`).forEach(el => {
+            const elTime = el.dataset.time;
+            const elDate = parseHTMLDate(el.dataset.date);
             
-            // Add visual indication if fully booked
-            if (course.remaining <= 0) {
-                el.classList.add('opacity-70');
-                el.classList.remove('cursor-pointer', 'hover:shadow-md');
+            if (elTime === course.time && elDate === course.date) {
+                el.dataset.remaining = course.remaining;
+                const remainingSpan = el.querySelector('.course-remaining');
+                if (remainingSpan) {
+                    remainingSpan.textContent = `Spots left: ${course.remaining}`;
+                }
+                
+                if (course.remaining <= 0) {
+                    el.classList.add('opacity-70');
+                    el.style.cursor = 'not-allowed';
+                }
             }
         });
         
-        // Re-render if current view is day view and course date matches
-        if (currentView === 'day' && dayViewDate.textContent.includes(course.date)) {
-            renderDayView();
+        if (currentView === 'day') {
+            const currentDay = formatDateForComparison(currentDate);
+            if (course.date === currentDay) {
+                renderDayView();
+            }
         }
     }
     
-    // Initialization
-    updateDateDisplay();
-    attachBookButtonEvents();
+    // Initialization 
+    function init() {
+        updateDateDisplay();
+        attachBookButtonEvents();
+        
+        weekViewBtn.classList.add('btn-primary', 'active');
+        dayViewBtn.classList.add('btn-secondary');
+        weekView.style.display = 'block';
+        dayView.style.display = 'none';
+    }
+    
+    init();
 });
